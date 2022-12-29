@@ -17,7 +17,8 @@ namespace _7._8_HomeWork
             Console.Write("Введите '0', чтобы создать файл Справочник сотрудников\n" +
                           "Введите '1', чтобы вывести данные о сотрудниках из Справочника\n" +
                           "Введите '2', чтобы внести данные о новых сотрудниках в конец Справочника\n" +
-                          "Введите '3', чтобы вывести данные о сотруднике по его ID\n");
+                          "Введите '3', чтобы вывести данные о сотруднике по его ID\n" +
+                          "Введите '4', чтобы удалить данные о сотруднике по его ID\n");
             var input = Console.ReadLine();
 
             switch (input)
@@ -36,8 +37,14 @@ namespace _7._8_HomeWork
                 case "3":
                     rep.CreateRepository(Path);
                     Console.Write("Введите ID сотрудника: ");
-                    int ID = int.Parse(Console.ReadLine());
-                    rep.getWorkerByID(Path, ID);
+                    int IDtoGet = int.Parse(Console.ReadLine());
+                    rep.getWorkerByID(Path, IDtoGet);
+                    break;
+                case "4":
+                    rep.CreateRepository(Path);
+                    Console.Write("Введите ID сотрудника: ");
+                    int IDtoDelete = int.Parse(Console.ReadLine());
+                    rep.deleteWorkerByID(Path, IDtoDelete);
                     break;
                 default:
                     Console.Write("Вы ввели недопустимый символ");

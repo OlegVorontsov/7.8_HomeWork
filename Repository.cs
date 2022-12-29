@@ -194,6 +194,67 @@ namespace _7._8_HomeWork
             }
         }
 
+        /// <summary>
+        /// Удаление данных о сотруднике по его ID
+        /// </summary>
+        /// <param name="Path"></param>
+        /// <param name="ID"></param>
+        public void deleteWorkerByID(string Path, int ID)
+        {
+            int i = 0;
+            bool IDnotFound = true;
+            bool alreadyFound = true;
+
+            using (StreamReader sr = new StreamReader(this.path))
+            {
+                titles = sr.ReadLine().Split(',');
+                while (!sr.EndOfStream)
+                {
+                    string[] args = sr.ReadLine().Split('#');
+
+                    if (args[0] != ID.ToString())
+                    {
+                        Add(new Worker(args[0], args[1], args[2], args[3], args[4], args[5], args[6]));
+                    }
+                    else
+                    {
+                        if (alreadyFound)
+                        {
+                            Console.WriteLine($"Сотрудник(и) с ID: {ID} удален(ы) из Справочника");
+                            alreadyFound = false;
+                            IDnotFound = false;
+                        }
+                    }
+                    i++;
+                }
+                if (IDnotFound)
+                {
+                    Console.WriteLine($"Сотрудника с ID: {ID} нет в Справочнике");
+                }
+            }
+            File.Delete(Path);
+            File.Create(Path).Close();
+            using (StreamWriter sw = new StreamWriter(this.path, true, Encoding.UTF8))
+            {
+                string line = string.Empty;
+                line = "Номер, Дата записи, Ф.И.О., Возраст, Рост, Дата рождения, Место рождения";
+                sw.WriteLine(line);
+
+                for (int j = 0; j < index; j++)
+                {
+                    string lineWorker = string.Empty;
+                    lineWorker = $"{this.Workers[j].ID}#" + 
+                                 $"{this.Workers[j].DateAndTime}#" + 
+                                 $"{this.Workers[j].FullName}#" + 
+                                 $"{this.Workers[j].Age}#" + 
+                                 $"{this.Workers[j].Height}#" + 
+                                 $"{this.Workers[j].DateBirth}#" + 
+                                 $"{this.Workers[j].PlaceBirth}";
+                    sw.WriteLine(lineWorker);
+                }
+            }
+        }
+
         #endregion
     }
 }
