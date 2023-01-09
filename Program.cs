@@ -18,7 +18,8 @@ namespace _7._8_HomeWork
                           "Введите '1', чтобы вывести данные о сотрудниках из Справочника\n" +
                           "Введите '2', чтобы внести данные о новых сотрудниках в конец Справочника\n" +
                           "Введите '3', чтобы вывести данные о сотруднике по его ID\n" +
-                          "Введите '4', чтобы удалить данные о сотруднике по его ID\n");
+                          "Введите '4', чтобы удалить данные о сотруднике по его ID\n" +
+                          "Введите '5', чтобы вывести данные о сотрудниках, чьи даты рождения находятся в указанном диапазоне дат \n");
             var input = Console.ReadLine();
 
             switch (input)
@@ -45,6 +46,14 @@ namespace _7._8_HomeWork
                     Console.Write("Введите ID сотрудника: ");
                     int IDtoDelete = int.Parse(Console.ReadLine());
                     rep.deleteWorkerByID(Path, IDtoDelete);
+                    break;
+                case "5":
+                    rep.CreateRepository(Path);
+                    Console.Write("Введите нижний предел диапазона дат (дд.мм.гггг): ");
+                    DateTime dateFrom = DateTime.Parse(Console.ReadLine());
+                    Console.Write("Введите верхний предел диапазона дат (дд.мм.гггг): ");
+                    DateTime dateTo = DateTime.Parse(Console.ReadLine());
+                    rep.GetWorkersBetweenTwoDates(Path, dateFrom, dateTo);
                     break;
                 default:
                     Console.Write("Вы ввели недопустимый символ");

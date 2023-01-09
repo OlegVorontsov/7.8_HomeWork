@@ -8,37 +8,41 @@ namespace _7._8_HomeWork
 {
     struct Worker
     {
-        #region Конструктор
+        #region Поля
         /// <summary>
-        /// Создание сотрудника
+        /// Поле "Порядковый номер"
         /// </summary>
-        /// <param name="ID"></param>
-        /// <param name="DateAndTime"></param>
-        /// <param name="FullName"></param>
-        /// <param name="Age"></param>
-        /// <param name="Height"></param>
-        /// <param name="DateBirth"></param>
-        /// <param name="PlaceBirth"></param>
-        public Worker(string ID, string DateAndTime, string FullName, string Age, string Height, string DateBirth, string PlaceBirth)
-        {
-            this.id = ID;
-            this.dateandtime = DateAndTime;
-            this.fullName = FullName;
-            this.age = Age;
-            this.height = Height;
-            this.dateBirth = DateBirth;
-            this.placeBirth = PlaceBirth;
-        }
+        private string id;
 
-        #endregion
+        /// <summary>
+        /// Поле "Дата и время записи"
+        /// </summary>
+        private string dateandtime;
 
-        #region Методы
+        /// <summary>
+        /// Поле "Ф.И.О."
+        /// </summary>
+        private string fullName;
 
-        public string Print()
-        {
-            return $"{this.id,3}{this.dateandtime,25}{this.fullName,30}{this.age,10}{this.height,10}{this.dateBirth,15}{this.placeBirth,20}";
-        }
+        /// <summary>
+        /// Поле "Возраст"
+        /// </summary>
+        private string age;
 
+        /// <summary>
+        /// Поле "Рост"
+        /// </summary>
+        private string height;
+
+        /// <summary>
+        /// Поле "Дата рождения"
+        /// </summary>
+        private string dateBirth;
+
+        /// <summary>
+        /// Поле "Место рождения"
+        /// </summary>
+        private string placeBirth;
         #endregion
 
         #region Свойства
@@ -107,41 +111,37 @@ namespace _7._8_HomeWork
 
         #endregion
 
-        #region Поля
+        #region Конструктор
         /// <summary>
-        /// Поле "Порядковый номер"
+        /// Создание сотрудника
         /// </summary>
-        private string id;
+        /// <param name="ID"></param>
+        /// <param name="DateAndTime"></param>
+        /// <param name="FullName"></param>
+        /// <param name="Age"></param>
+        /// <param name="Height"></param>
+        /// <param name="DateBirth"></param>
+        /// <param name="PlaceBirth"></param>
+        public Worker(string ID, string DateAndTime, string FullName, string Age, string Height, string DateBirth, string PlaceBirth)
+        {
+            this.id = ID;
+            this.dateandtime = DateAndTime;
+            this.fullName = FullName;
+            this.age = Age;
+            this.height = Height;
+            this.dateBirth = DateBirth;
+            this.placeBirth = PlaceBirth;
+        }
 
-        /// <summary>
-        /// Поле "Дата и время записи"
-        /// </summary>
-        private string dateandtime;
+        #endregion
 
-        /// <summary>
-        /// Поле "Ф.И.О."
-        /// </summary>
-        private string fullName;
+        #region Методы
 
-        /// <summary>
-        /// Поле "Возраст"
-        /// </summary>
-        private string age;
+        public string Print()
+        {
+            return $"{this.id,3}{this.dateandtime,25}{this.fullName,30}{this.age,10}{this.height,10}{this.dateBirth,15}{this.placeBirth,20}";
+        }
 
-        /// <summary>
-        /// Поле "Рост"
-        /// </summary>
-        private string height;
-
-        /// <summary>
-        /// Поле "Дата рождения"
-        /// </summary>
-        private string dateBirth;
-
-        /// <summary>
-        /// Поле "Место рождения"
-        /// </summary>
-        private string placeBirth;
         #endregion
     }
 }

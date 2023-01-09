@@ -255,6 +255,40 @@ namespace _7._8_HomeWork
             }
         }
 
+        public void GetWorkersBetweenTwoDates(string Path, DateTime dateFrom, DateTime dateTo)
+        {
+            int i = 0;
+            bool dateNotFound = true;
+            bool TitlesNotPrinted = true;
+            using (StreamReader sr = new StreamReader(this.path))
+            {
+                titles = sr.ReadLine().Split(',');
+                while (!sr.EndOfStream)
+                {
+                    string[] args = sr.ReadLine().Split('#');
+
+                    Add(new Worker(args[0], args[1], args[2], args[3], args[4], args[5], args[6]));
+                    DateTime dateBirthToCheck = DateTime.Parse(args[5]);
+
+                    if ((dateFrom < dateBirthToCheck) && (dateBirthToCheck < dateTo))
+                    {
+                        if (TitlesNotPrinted)
+                        {
+                            Console.WriteLine($"{this.titles[0],5}{this.titles[1],20}{this.titles[2],25}{this.titles[3],20}{this.titles[4],8}{this.titles[5],17}{this.titles[6],20}");
+                            TitlesNotPrinted = false;
+                        }
+                        Console.WriteLine(this.Workers[i].Print());
+                        dateNotFound = false;
+                    }
+                    i++;
+                }
+                if (dateNotFound)
+                {
+                    Console.WriteLine($"В Справочнике нет сотрудников, чьи даты рождения находятся в диапазоне дат от {dateFrom.ToShortDateString()} до {dateTo.ToShortDateString()}");
+                }
+            }
+        }
+
         #endregion
     }
 }
